@@ -1,0 +1,20 @@
+{
+  "name": "esm-builtins",
+  "version": "0.0.1",
+  "description": "List of node.js builtin modules",
+  "repository": "https://github.com/imtaotao/esm-builtins",
+  "license": "MIT",
+  "main": "index.mjs",
+  "types": "index.d.ts",
+  "files": [],
+  "scripts": {
+    "test": "standard --fix && node--test"
+  },
+  "dependencies": {
+    "esm-semver": "^0.0.7"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0",
+    "test": "^3.0.0"
+  }
+}
