@@ -14,7 +14,7 @@
     "test": "standard --fix && node--test"
   },
   "dependencies": {
-    "esm-semver": "^0.0.7"
+    "esm-semver": "^0.0.8"
   },
   "devDependencies": {
     "standard": "^17.0.0",
