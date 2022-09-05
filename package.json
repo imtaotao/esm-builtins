@@ -1,6 +1,6 @@
 {
   "name": "esm-builtins",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "List of node.js builtin modules",
   "repository": "https://github.com/imtaotao/esm-builtins",
   "license": "MIT",
