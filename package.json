@@ -1,23 +1,32 @@
 {
   "name": "esm-builtins",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "List of node.js builtin modules",
   "repository": "https://github.com/imtaotao/esm-builtins",
   "license": "MIT",
-  "main": "index.mjs",
+  "main": "dist/builtins.cjs.js",
+  "module": "dist/builtins.esm-bundler.js",
+  "unpkg": "dist/builtins.umd.js",
   "types": "index.d.ts",
   "files": [
+    "dist/",
     "index.mjs",
     "index.d.ts"
   ],
   "scripts": {
+    "build": "rollup --config",
     "test": "standard --fix && node--test"
   },
   "dependencies": {
-    "esm-semver": "^0.0.8"
+    "esm-semver": "^0.0.9"
   },
   "devDependencies": {
     "standard": "^17.0.0",
-    "test": "^3.0.0"
+    "test": "^3.0.0",
+    "rollup": "^2.67.2",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.3"
   }
 }
