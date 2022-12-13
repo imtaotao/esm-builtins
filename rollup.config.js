@@ -1,8 +1,11 @@
 import path from 'path'
 import json from '@rollup/plugin-json'
 import cleanup from 'rollup-plugin-cleanup'
+import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+
+const pkg = require(path.resolve(__dirname, 'package.json'));
 
 const outputConfigs = {
   cjs: {
@@ -19,6 +22,20 @@ const outputConfigs = {
   }
 }
 
+const externals = (() => {
+  const pkgs = [];
+  const set = deps => {
+    if (!deps) return;
+    for (const pkgName in deps) {
+      pkgs.push(pkgName);
+    }
+  };
+  set(pkg.dependencies);
+  set(pkg.peerDependencies);
+  set(pkg.optionalDependencies);
+  return pkgs;
+})();
+
 const packageConfigs = Object.keys(outputConfigs).map((format) =>
   createConfig(format, outputConfigs[format])
 )
@@ -30,6 +47,7 @@ function createConfig (format, output) {
 
   return {
     output,
+    external: isUmdBuild ? [] : externals,
     input: path.resolve(__dirname, 'index.mjs'),
     plugins: [
       cleanup(),
@@ -37,7 +55,12 @@ function createConfig (format, output) {
         namedExports: false
       }),
       nodeResolve({ browser: isUmdBuild }),
-      commonjs({ sourceMap: false })
+      commonjs({ sourceMap: false }),
+      babel({
+        presets: [
+          '@babel/preset-env',
+        ],
+      }),
     ]
   }
 }

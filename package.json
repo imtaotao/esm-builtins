@@ -1,6 +1,6 @@
 {
   "name": "esm-builtins",
-  "version": "0.0.6",
+  "version": "1.0.1",
   "description": "List of node.js builtin modules",
   "repository": "https://github.com/imtaotao/esm-builtins",
   "license": "MIT",
@@ -17,14 +17,19 @@
     "build": "rollup --config",
     "test": "standard --fix && node--test"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
-    "esm-semver": "^0.0.9"
+    "esm-semver": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "standard": "^17.0.0",
     "test": "^3.0.0",
     "rollup": "^2.67.2",
     "rollup-plugin-cleanup": "^3.2.1",
+    "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.3"

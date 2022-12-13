@@ -1,4 +1,4 @@
-import semver from 'semver'
+import semver from 'esm-semver'
 
 const permanentModules = [
   'assert',
